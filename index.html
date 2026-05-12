@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Todo List App</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <div class="app">
+
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-top">
+        <div>
+          <h1 class="app-title">My Tasks</h1>
+          <p class="app-date" id="app-date"></p>
+        </div>
+        <div class="header-stats">
+          <div class="stat-pill" id="stat-pill">
+            <span id="completed-count">0</span> / <span id="total-count">0</span> done
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="progress-bar" role="progressbar" aria-label="Task completion progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+    </header>
+
+    <!-- Add Task -->
+    <div class="add-task-section">
+      <form class="add-form" id="add-form" novalidate>
+        <div class="input-wrapper">
+          <span class="input-icon">+</span>
+          <input
+            type="text"
+            id="task-input"
+            class="task-input"
+            placeholder="Add a new task..."
+            maxlength="120"
+            autocomplete="off"
+            aria-label="New task"
+          />
+          <span class="char-count" id="char-count">120</span>
+        </div>
+        <div class="add-options">
+          <select id="priority-select" class="priority-select" aria-label="Priority">
+            <option value="normal">Normal</option>
+            <option value="high">High</option>
+            <option value="low">Low</option>
+          </select>
+          <button type="submit" class="btn-add" aria-label="Add task">Add Task</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All <span class="filter-count" id="count-all">0</span></button>
+      <button class="filter-btn" data-filter="active">Active <span class="filter-count" id="count-active">0</span></button>
+      <button class="filter-btn" data-filter="completed">Done <span class="filter-count" id="count-completed">0</span></button>
+      <button class="btn-clear-done" id="clear-done" aria-label="Clear completed tasks">Clear Done</button>
+    </div>
+
+    <!-- Task List -->
+    <main class="task-list-wrapper">
+      <ul class="task-list" id="task-list" aria-label="Task list" aria-live="polite">
+        <!-- Tasks rendered by JS -->
+      </ul>
+
+      <!-- Empty State -->
+      <div class="empty-state" id="empty-state" hidden>
+        <div class="empty-icon">✓</div>
+        <p class="empty-title">All clear!</p>
+        <p class="empty-sub">Add a task above to get started.</p>
+      </div>
+    </main>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
